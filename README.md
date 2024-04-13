@@ -13,6 +13,7 @@ fisher install kpbaks/countdown.fish
 
 ## Usage
 
+![image](https://github.com/kpbaks/countdown.fish/assets/57013304/0334a781-6baa-47b1-96cb-dfb191ce4bb9)
 
 ## Customization
 
