@@ -166,7 +166,23 @@ function countdown -d 'print a colorful countdown, to remind you about your dead
 
         # LC_NUMERIC="en_US.UTF-8" printf '%06.2f\n' 4.0023
 
-        printf '%s%s%s%s\n' $bar_passed_color $bar_passed $reset $bar_left
+        # set -l bar_passed_color (set_color $colors[(math "floor($ratio_passed * $(count $colors))")])
+
+        # COLUMNS:
+        # percentage_passed: [0,1]
+        # n_colors:
+
+        set -l n (math "floor($ratio_passed * $(count $colors))")
+        # echo "n: $n"
+        set -l width (math "floor($COLUMNS / $(count $colors))")
+        for i in (seq $n)
+            # set -l width 6
+            # echo "color: $colors[$i]"
+            printf '%s%s' (set_color $colors[$i]) (string repeat --count $width '█')
+        end
+
+        printf '%s\n' $bar_left
+        # printf '%s%s%s%s\n' $bar_passed_color $bar_passed $reset $bar_left
 
         if set --query _flag_loop
             sleep $_flag_sleep
