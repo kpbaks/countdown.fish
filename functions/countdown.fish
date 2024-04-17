@@ -102,7 +102,7 @@ function countdown -d 'print a colorful countdown, to remind you about your dead
     if set --query _flag_loop
         # NOTE: defer keyword would be nice for this
         printf "\e[?25l" # hide cursor
-        function __countdown_restore_cursor --on-signal SIGINT
+        function __restore_cursor --on-event fish_prompt
             printf "\e[?25h" # restore cursor
             functions --erase (status function) # erase hook
         end
